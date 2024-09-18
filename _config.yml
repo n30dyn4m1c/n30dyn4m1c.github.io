@@ -2,12 +2,3 @@ theme: jekyll-theme-minimal
 title: N30 GitHub Page
 description: > # this means to ignore newlines until "baseurl:"
   A simple minimalistic blog & profile page.
-
-# Navigation menu
-menu:
-  - title: Home
-    url: /
-  - title: About
-    url: /about
-  - title: Blog
-    url: /blog
