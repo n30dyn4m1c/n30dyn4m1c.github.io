@@ -1,6 +1,9 @@
+title: Your Site Title
+description: >
+  Your site description.
+baseurl: "" # Leave this blank for root-level deployment.
+url: "https://n30dyn4m1c.github.io"
 theme: jekyll-theme-minimal
-title: N30 Files
-description: > # this means to ignore newlines until "baseurl:"
-  A simple minimalistic blog & profile page.
 
-
+# Permalink structure for blog posts
+permalink: /:categories/:year/:month/:day/:title/
