@@ -7,3 +7,4 @@ theme: jekyll-theme-minimal
 
 # Permalink structure for blog posts
 permalink: /:categories/:year/:month/:day/:title/
+# Force rebuild 1
