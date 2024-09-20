@@ -1,6 +1,6 @@
-title: Your Site Title
+title: N30 Files
 description: >
-  Your site description.
+  N30's publicly shared work.
 baseurl: "" # Leave this blank for root-level deployment.
 url: "https://n30dyn4m1c.github.io"
 theme: jekyll-theme-minimal
