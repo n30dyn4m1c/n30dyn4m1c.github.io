@@ -15,5 +15,6 @@ I've retired my Medium, Twitter, LinkedIn, and Facebook. I have a YouTube channe
 - [TikTok](https://www.tiktok.com/@n30dyn4m1c)
 
 ## Latest Posts
-- [Trade Review Thu 19 Sep 2024] (https://n30dyn4m1c.github.io/2024/09/20/trade-review/)
+- [Trade Review Thu 19 Sep 2024](https://n30dyn4m1c.github.io/2024/09/20/trade-review/)
+
 
