@@ -2,7 +2,9 @@
 layout: post
 title: "Trade Review for Thu 19 Sep 2024"
 date: 2024-09-20
+author: N30
 categories: trading
+tags: [gold, trading, demotrading, crt]
 ---
 
 I returned to demo trading to test CRT + TS strategies. I have a $10,000 account to start off. The strategy will be refined as a test.
