@@ -9,9 +9,9 @@ tags: [gold, trading, demotrading, crt]
 
 I returned to demo trading to test CRT + TS strategies. I have a $10,000 account to start off. The strategy will be refined as a test.
 
-Starting Equity: $10,000
-Instrument: Gold, XAUUSD
-Risk: 5% = $500
+- Starting Equity: $10,000
+- Instrument: Gold, XAUUSD
+- Risk: 5% = $500
 
 ## Strategy
 - Mark CRH and CRL of 6AM H4 candle (1200 XM time)
