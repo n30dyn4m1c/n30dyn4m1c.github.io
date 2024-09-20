@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trade Review Thu 19 Sep 2024"
-date: 2024-09-20
+date: 2024-09-20 23:12 +1000
 categories: trading
 ---
 
