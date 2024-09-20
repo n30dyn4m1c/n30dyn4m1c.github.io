@@ -14,23 +14,22 @@ Instrument: Gold, XAUUSD
 Risk: 5% = $500
 
 ## Strategy
-Mark CRH and CRL of 6AM H4 candle (1200 XM time)
-Wait for TS or rejection at high or low. Watch on M15, M5, or M1 for a TS or rejection candle. This should take place between NY Open 9:30 to 10:30 (1600,1700, 1800 XM time)
-If it happens, calculate ATR x 10 for SL1 and ATR x 20 for SL2, adjust lot size until total risk is $500
-TP1 at 50%, TP2 at 100%
+- Mark CRH and CRL of 6AM H4 candle (1200 XM time)
+- Wait for TS or rejection at high or low. Watch on M15, M5, or M1 for a TS or rejection candle. This should take place between NY Open 9:30 to 10:30 (1600,1700, 1800 XM time)
+- If it happens, calculate ATR x 10 for SL1 and ATR x 20 for SL2, adjust lot size until total risk is $500
+- TP1 at 50%, TP2 at 100%
 
-Source: The Soup Room, the 5AM 4H CRT Model for Forex
+- Source: The Soup Room, the 5AM 4H CRT Model for Forex
 
-5AM H4 CRT
-Wait for M15 CRT at high/low of 5AM CRT (LTF CRT within HTF CRT)
-Timing: 9AM to 10:30AM (1600 to 1730)
-M15 at PD array on Daily. Key level for H4 CRT must be from Daily timeframe eg Daily FVG.
-Enter on 2nd candle of M15 CRT, after rejection candle.
-M1, M5 can break out from an OB. Can also use Fibo 61.8 for an entry.
+- 5AM H4 CRT
+- Wait for M15 CRT at high/low of 5AM CRT (LTF CRT within HTF CRT)
+- Timing: 9AM to 10:30AM (1600 to 1730)
+- M15 at PD array on Daily. Key level for H4 CRT must be from Daily timeframe eg Daily FVG.
+- Enter on 2nd candle of M15 CRT, after rejection candle.
+- M1, M5 can break out from an OB. Can also use Fibo 61.8 for an entry.
+- Minimum 3/4 conditions to be true
 
-Minimum 3/4 conditions to be true
-
-6AM 4H CRT Model for Futures is the same, but uses 6AM candle and purge from 10AM to 11:30AM
+- 6AM 4H CRT Model for Futures is the same, but uses 6AM candle and purge from 10AM to 11:30AM
 
 
 ## Trade Review
