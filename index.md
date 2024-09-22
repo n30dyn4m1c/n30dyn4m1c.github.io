@@ -18,7 +18,8 @@ I've retired my Medium, Twitter, LinkedIn, and Facebook. I have a YouTube channe
 - Learning Spring Boot, React, and Material UI.
 
 ## Latest Posts
-- [Trade Review Thu 19 Sep 2024]({% post_url 2024-09-20-trade-review %})
+- [Dev Diary 22 Sep 2024]({% post_url 2024-09-22-dev-diary-react %})
 - [Trade Review Fri 20 Sep 2024]({% post_url 2024-09-21-trade-review %})
+- [Trade Review Thu 19 Sep 2024]({% post_url 2024-09-20-trade-review %})
 
 🌐 My Bookmarks: [N30 WordPress](https://www.n30dyn4m1c.wordpress.com)
