@@ -30,7 +30,7 @@ I traded Gold and NASDAQ yesterday. There was news at 12:45 but I took the trade
 - Placed BE on volatile price, prior to news. First trade was risk free.
 - Closed trade when purge time was lapsed 1600 to 1730. Anything after 1730 is considered invalid for a timed purge.
 
-## Failure
+## Failures
 1. Did a re-entry when I could've closed with a small profit.
 	- Solution: I need a trade rule to determine validity of re-entries.
 2. Traded before the news at 12:45 PGT. Is this okay?
@@ -57,8 +57,8 @@ I traded Gold and NASDAQ yesterday. There was news at 12:45 but I took the trade
 
 ## Failures
 1. Careless entries on M5 and M1 within range.
-- Solution: Wait patiently for M5 or M15 setup outside of range high/low. Do not take trades within the range.
+	- Solution: Wait patiently for M5 or M15 setup outside of range high/low. Do not take trades within the range.
 2. Ignored earlier CRT setup and took trade in NY.
-- Solution: We will now take note of earlier CRTs. If one forms during the day in Asia or London, do not trade NY. Consider incorporating CRT on earlier H4 candles into demo trades.
+	- Solution: We will now take note of earlier CRTs. If one forms during the day in Asia or London, do not trade NY. Consider incorporating CRT on earlier H4 candles into demo trades.
 3. Demo Traded on Live Account. Lost real money.
-- Solution: Open a demo account on XM to trade NASDAQ. Stop tests on real money.
+	- Solution: Open a demo account on XM to trade NASDAQ. Stop tests on real money.
