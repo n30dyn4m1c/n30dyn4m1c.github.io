@@ -10,11 +10,13 @@ title: Home
 
 This is where you'll find everything I work on and share publicly.
 
-I've retired my Medium, Twitter, LinkedIn, and Facebook. I have a YouTube channel but not actively maintained. TikTok is my only public social account now.
-🌐 Social Link: [TikTok](https://www.tiktok.com/@n30dyn4m1c)
+I've retired my Medium, LinkedIn, and Facebook. I have a YouTube channel but not actively maintained. TikTok and X are my only public social accounts now.
+🌐 Social Links:
+- [TikTok](https://www.tiktok.com/@n30dyn4m1c)
+- [X](https://twitter.com/n30dyn4m1c)
 
 ## My Current Projects:
-- Demo Trading Candle Range Theory with Gold.
+- Demo Trading Candle Range Theory with Gold and NASDAQ.
 - Learning Spring Boot, React, and Material UI.
 
 ## Latest Posts
