@@ -53,4 +53,32 @@ I got stopped out around 90 pips.
 
 ## NASDAQ Trade Review
 - Opened a new demo account on XM with $10,000 equity so I am not using real money to test now, which is good.
-- 
+- Traded using Hancock's model for CRT, which involves a purge, followed by confirmations which are change in state of delivery: CSD1 and CSD2. If there is a purge of the low, we look for bullish CSD1 and bullish CSD2 as confirmations to enter.
+- I executed on M5.
+- I am yet to understand SL placement for CRT, but most likely it is the low after purge. Movement against it invalidates the trade.
+- I am making this NASDAQ entry 1 day late (It is Thursday now), so I'll try to log my trades in time and not get carried away with further trades.
+
+- CRT #1 2024-09-24 PGT (2024-09-23 EDT)
+- Hancock's Model
+- Timed Range: 5:00AM-8:59AM
+- Tme of Purge: 10:00AM
+- Time of Execution: 10:50AM
+- Risk: 70 points
+- Reward:134 points
+- 1.5 RR
+
+## Successes
+- Found a new CRT model with better results by hancock on X, Hancock's model
+- Also found a document on invalid CSDs by mario on X
+- Traded on a new demo account.
+- Posted CRT screenshots on X to contribute back. Followed mario, hancock, joined telegram groups. 
+  
+## Failures
+1. Didn't decide how to place SL
+   - Solution: Use low of the CSD furthest from CR range and a factor of ATR(4) for volatility
+
+2. Didn't really understand CSD confirmations
+   - Solution: Review mario's CSD confirmation doc and hancock's CSD entries. Set down rules of valid and invalid CSDs, or simple CSDs. Then compare them in backtesting.
+  
+    
+
