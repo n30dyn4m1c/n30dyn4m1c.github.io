@@ -20,6 +20,7 @@ I've retired my Medium, LinkedIn, and Facebook. I have a YouTube channel but not
 - Learning Spring Boot, React, and Material UI.
 
 ## Latest Posts
+- [Last Week's Trade Lessons Wk1 of Oct 2024]({% post_url 2024-10-07-trade-lessons %})
 - [Moved Trade Reviews to X]({% post_url 2024-10-03-trade-review-update %})
 - [Trade Review Thu 26 Sep 2024]({% post_url 2024-09-26-trade-review %})
 - [Trade Review Wed 25 Sep 2024]({% post_url 2024-09-25-trade-review %})
