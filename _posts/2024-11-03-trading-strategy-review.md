@@ -7,7 +7,7 @@ categories: trading
 tags: [gold, nasdaq, trading, demotrading, crt]
 ---
 
-It has been four weeks since my last trading writeup and within those four week’s I’ve covered some significant new topics on CRT and other trading strategies. Weekly writeups would have been ideal to reduce the cognitive load and also to process and develop underlying ideas that seem to have a spark of hope for longer-term use. Nevertheless, I will try to cover as many items in this article.
+It has been four weeks since my last trading writeup and within those four weeks I’ve covered some significant new topics on CRT and other trading strategies. Weekly writeups would have been ideal to reduce the cognitive load and also to process and develop underlying ideas that seem to have a spark of hope for longer-term use. Nevertheless, I will try to cover as many items in this article.
 
 ## General CRT
 The original theory of candle ranges was a basic three candle pattern. The first formed the dynamic range, the second was a manipulation candle which contained a raid, a turtle soup, then the third was the distribution or expansion candle back into the first candle’s range.
