@@ -16,10 +16,11 @@ I've retired my Medium, LinkedIn, and Facebook. I have a YouTube channel but not
 - [X](https://twitter.com/n30dyn4m1c)
 
 ## My Current Projects:
-- Demo Trading Candle Range Theory with Gold and NASDAQ.
+- Trading Candle Range Theory variations.
 - Learning Spring Boot, React, and Material UI.
 
 ## Latest Posts
+- [A Review of Candle Range Theory and Related Trading Strategies - Oct 2024]({% post_url 2024-11-03-trading-strategy-review %})
 - [Last Week's Trade Lessons Wk1 of Oct 2024]({% post_url 2024-10-07-trade-lessons %})
 - [Moved Trade Reviews to X]({% post_url 2024-10-03-trade-review-update %})
 - [Trade Review Thu 26 Sep 2024]({% post_url 2024-09-26-trade-review %})
