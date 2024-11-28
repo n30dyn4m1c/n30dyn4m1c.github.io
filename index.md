@@ -4,7 +4,7 @@ title: Home
 ---
 
 # Welcome to N30 Files
-*Glory to God in the Highest! Jesus Christ is Lord and King over all!*
+*Hoc hostes meos, linguas eorum, voluntatesque eorum liget.*
 
 👋 Hi, I'm N30.
 
