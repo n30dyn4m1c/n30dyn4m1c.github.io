@@ -4,7 +4,7 @@ title: Home
 ---
 
 # Welcome to N30 Files
-*Hoc hostes meos, linguas eorum, voluntatesque eorum liget.*
+*#z3r0*
 
 👋 Hi, I'm N30.
 
