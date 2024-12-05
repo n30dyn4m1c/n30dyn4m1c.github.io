@@ -4,7 +4,7 @@ title: Home
 ---
 
 # Welcome to N30 Files
-*#z3r0*
+*Expecting the unexpected, witnessing poetry in motion, super colossal history.*
 
 👋 Hi, I'm N30.
 
