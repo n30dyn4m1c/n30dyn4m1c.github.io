@@ -702,7 +702,14 @@ noscript {
     margin: 0 12px 0 0
 }
 
+.jello{
+  display:inline-block;   /* keeps letters in a line */
+  opacity:.4;             /* 40 % strength */
+  transition:opacity .3s; /* smooth fade */
+}
+
 .jello:hover {
+    opacity:1;  
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
