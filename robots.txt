@@ -10,5 +10,3 @@ Allow: /
 
 User-agent: PerplexityBot
 Allow: /
-
-Sitemap: https://n30dyn4m1c.github.io/sitemap.xml
