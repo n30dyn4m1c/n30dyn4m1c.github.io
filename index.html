@@ -35,19 +35,31 @@
   <meta name="twitter:image" content="https://neomalesa.com/assets/og-image.png" />
   <meta name="twitter:site" content="@n30dyn4m1c" />
   <meta name="twitter:creator" content="@n30dyn4m1c" />
-  <!-- Favicon — a gold seal monogram, drawn inline; no file required -->
-  <link
-    rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%237E5F18' stroke-width='4'/><text x='50' y='52' font-family='Georgia,serif' font-size='52' font-weight='600' fill='%237E5F18' text-anchor='middle' dominant-baseline='central'>N</text></svg>"
-  />
-  <!-- Fonts: Cormorant Garamond (display) + Spectral (body) -->
+  <!-- Favicon — real files required for Google Search to display the icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="192x192" href="favicon.png" />
+  <!-- Fonts: Cormorant Garamond (display) + Spectral (body) — only the weights in use -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet"
   />
+  <!-- Hero portrait is the LCP element — fetch it at highest priority -->
+  <link
+    rel="preload"
+    as="image"
+    type="image/webp"
+    imagesrcset="assets/images/neo_profilepic-800.webp 800w, assets/images/neo_profilepic-1600.webp 1600w"
+    imagesizes="(max-width: 899px) 100vw, 42vw"
+    fetchpriority="high"
+  />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Marks the document as JS-capable; entrance animations only hide content
+       when this class is present, so a failed script never leaves a blank page -->
+  <script>document.documentElement.classList.add('js');</script>
   <!-- Structured data — helps search engines connect the name to the work -->
   <script type="application/ld+json">
   {
@@ -117,48 +129,67 @@
     ]
   }
   </script>
-  <noscript>
-    <style>
-      [data-reveal], [data-gsap-reveal], .connect__link { opacity: 1 !important; }
-    </style>
-  </noscript>
 </head>
 <body>
+  <!-- Roman-numeral section rail — desktop only, fades in past the hero -->
+  <nav class="rail" id="rail" aria-label="Sections">
+    <ol class="rail__list" role="list">
+      <li><a class="rail__link" href="#about" aria-label="About">I</a></li>
+      <li><a class="rail__link" href="#resources" aria-label="Resources">II</a></li>
+      <li><a class="rail__link" href="#experience" aria-label="Experience">III</a></li>
+      <li><a class="rail__link" href="#capabilities" aria-label="Capabilities">IV</a></li>
+      <li><a class="rail__link" href="#writing" aria-label="Writing">V</a></li>
+      <li><a class="rail__link" href="#engagements" aria-label="Engagements">VI</a></li>
+      <li><a class="rail__link" href="#connect" aria-label="Correspondence">VII</a></li>
+    </ol>
+  </nav>
   <main>
     <!-- ===== HERO ===== -->
     <section class="hero" id="hero" aria-label="Introduction">
       <!-- Text column -->
       <div class="hero__text">
-        <!-- Slow horizon canvas — purely decorative, behind the text -->
-        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="hero__inner">
           <p class="hero__kicker" data-reveal="0">Port Moresby &middot; Papua New Guinea</p>
           <h1 class="hero__name" data-reveal="1" aria-label="Neo Malesa">
-            <span class="name-line">Neo</span>
-            <span class="name-line">Malesa</span>
+            <span class="name-mask"><span class="name-line">Neo</span></span>
+            <span class="name-mask"><span class="name-line">Malesa</span></span>
           </h1>
           <span class="hero__rule" data-reveal="2" aria-hidden="true"></span>
           <p class="hero__role" data-reveal="3">
-            Applied Technologist &middot; Gold Trader
+            Technologist &middot; UPNG software development lead &middot; writing on technology and innovation in PNG
           </p>
+        </div>
+        <div class="hero__scrollcue" data-reveal="4" aria-hidden="true">
+          <span class="hero__scrollcue-label">Scroll</span>
+          <span class="hero__scrollcue-line"></span>
         </div>
       </div>
       <!-- Portrait column -->
       <figure class="hero__portrait" data-reveal="2">
-        <img
-          class="hero__portrait-img"
-          src="assets/images/neo_profilepic.jpg"
-          alt="Portrait of Neo Malesa"
-          width="1799"
-          height="1799"
-          decoding="async"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcset="assets/images/neo_profilepic-800.webp 800w, assets/images/neo_profilepic-1600.webp 1600w"
+            sizes="(max-width: 899px) 100vw, 42vw"
+          />
+          <img
+            class="hero__portrait-img"
+            src="assets/images/neo_profilepic.jpg"
+            srcset="assets/images/neo_profilepic-800.jpg 800w, assets/images/neo_profilepic.jpg 1799w"
+            sizes="(max-width: 899px) 100vw, 42vw"
+            alt="Portrait of Neo Malesa"
+            width="1799"
+            height="1799"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </figure>
     </section>
     <!-- ===== ABOUT ===== -->
     <section class="section section--about" id="about" aria-labelledby="about-heading">
       <div class="section__inner">
-        <h2 class="section__heading" id="about-heading" data-gsap-reveal>
+        <h2 class="section__heading" id="about-heading" data-ghost="I" data-gsap-reveal>
           <span class="section__index" aria-hidden="true">I</span>
           About
         </h2>
@@ -172,40 +203,99 @@
         </div>
       </div>
     </section>
-    <!-- ===== MANIFESTO ===== -->
-    <section class="section section--methodology" id="approach" aria-labelledby="approach-heading">
+    <!-- ===== RESOURCES ===== -->
+    <section class="section section--resources" id="resources" aria-labelledby="resources-heading">
       <div class="section__inner">
-        <h2 class="section__heading" id="approach-heading" data-gsap-reveal>
+        <h2 class="section__heading" id="resources-heading" data-ghost="II" data-gsap-reveal>
           <span class="section__index" aria-hidden="true">II</span>
-          Manifesto
+          Resources
         </h2>
-        <div class="methodology__body" data-gsap-reveal>
-          <ul class="methodology__list" role="list">
-            <li class="methodology__item">
-              <p class="methodology__title">Super Colossal</p>
-              <p class="methodology__desc">We must build historic, monumental, supercolossal structures that outlive us and last for generations.</p>
-            </li>
-            <li class="methodology__item">
-              <p class="methodology__title">Prolific Polymath</p>
-              <p class="methodology__desc">We must be prolific in output every year, produce a superabundant volume of works. We must explore beyond our field into all fields.</p>
-            </li>
-            <li class="methodology__item">
-              <p class="methodology__title">Maximum Execution</p>
-              <p class="methodology__desc">We must do all that we can do under the sun, with the God-given resources and wisdom we have. Not attempting equates to failure.</p>
-            </li>
-          </ul>
+        <div class="resources__intro" data-gsap-reveal>
+          <p class="resources__lead">Tools made available for the public to use, free.</p>
         </div>
+        <ul class="resources__list" role="list">
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://gemini.google.com/gem/1wssKe29fiDCvUz6mFIeZm6PQdfBUocsz?usp=sharing" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Rabbit Hole Explorer (opens in a new tab)">
+              <span class="resources__title">Rabbit Hole Explorer</span>
+              <span class="resources__desc">Follows a question down through every tangent it opens, one layer at a time.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://chatgpt.com/g/g-68de1f7001088191bf9eeaed735515d9-deep-dive-gpt" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Deep Dive GPT (opens in a new tab)">
+              <span class="resources__title">Deep Dive GPT</span>
+              <span class="resources__desc">Runs a full deep dive on a topic — context, mechanisms, and implications, in one pass.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://gemini.google.com/gem/1Vq3W23Km5JGMeJkwUSzJiAfONIPueijc?usp=sharing" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open First Principles Explorer (opens in a new tab)">
+              <span class="resources__title">First Principles Explorer</span>
+              <span class="resources__desc">Full first-principles breakdown of a claim or problem — more depth than the simple version.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://gemini.google.com/gem/1I7w3j_yosDLzEY1n3KKQN6lWM-hk998b?usp=sharing" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open First Principles Explorer Simple (opens in a new tab)">
+              <span class="resources__title">First Principles Explorer Simple</span>
+              <span class="resources__desc">Breaks a claim or problem down to its foundational truths before building back up.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://gemini.google.com/gem/1kTrAndtN3rdHQksBcVtZepYUxmkaPyEv?usp=sharing" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Modern Dynamic Paraphrase Bible (opens in a new tab)">
+              <span class="resources__title">Modern Dynamic Paraphrase Bible</span>
+              <span class="resources__desc">Renders scripture in contemporary, dynamic-equivalence language.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://gemini.google.com/gem/15sRk9jYExUF5V_uJ4XL43EuzkIXFKCkY?usp=sharing" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Deep Root, 10 Whys Analysis (opens in a new tab)">
+              <span class="resources__title">Deep Root &middot; 10 Whys Analysis</span>
+              <span class="resources__desc">Root cause analysis carried through ten iterations of why, not the usual five.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://gemini.google.com/gem/1wHVJH9sYDNqSIL9t1qpcTqJCi2MmR0Ce?usp=sharing" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Chutzpah Mirror (opens in a new tab)">
+              <span class="resources__title">Chutzpah Mirror</span>
+              <span class="resources__desc">An unsparing psychological mirror — challenges comfort, cuts through excuses, presses toward action.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://n30dyn4m1c.github.io/upng-gpa-calculator_/" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open UPNG GPA Calculator (opens in a new tab)">
+              <span class="resources__title">UPNG GPA Calculator</span>
+              <span class="resources__desc">Calculates semester and cumulative GPA to UPNG's grading scale.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://github.com/n30dyn4m1c/ichimoku-h4-m1-align" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Ichimoku Gold Trading Bot (opens in a new tab)">
+              <span class="resources__title">Ichimoku Gold Trading Bot</span>
+              <span class="resources__desc">Free MT5 expert advisor for gold — enters only when six timeframes align on trend, with ATR-based risk sizing.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="resources__item" data-gsap-reveal>
+            <a href="https://github.com/n30dyn4m1c/360-photo-app" class="resources__link" target="_blank" rel="noopener noreferrer" aria-label="Open Photo Sphere (opens in a new tab)">
+              <span class="resources__title">Photo Sphere</span>
+              <span class="resources__desc">Android app for guided 360° photo capture — walks you around the shot and stitches the frames into a pannable sphere.</span>
+              <span class="resources__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
     <!-- ===== EXPERIENCE ===== -->
     <section class="section section--work" id="experience" aria-labelledby="experience-heading">
       <div class="section__inner">
-        <h2 class="section__heading" id="experience-heading" data-gsap-reveal>
+        <h2 class="section__heading" id="experience-heading" data-ghost="III" data-gsap-reveal>
           <span class="section__index" aria-hidden="true">III</span>
           Experience
         </h2>
         <ul class="work__list" role="list">
-          <li class="work__item" data-gsap-reveal>
+          <li class="work__item work__item--lead" data-gsap-reveal>
             <p class="work__org">University of Papua New Guinea</p>
             <p class="work__role">Team Leader, Online Services &middot; ICT Division &middot; Present</p>
             <p class="work__desc">
@@ -234,19 +324,24 @@
     <!-- ===== CAPABILITIES ===== -->
     <section class="section section--capabilities" id="capabilities" aria-labelledby="capabilities-heading">
       <div class="section__inner">
-        <h2 class="section__heading" id="capabilities-heading" data-gsap-reveal>
+        <h2 class="section__heading" id="capabilities-heading" data-ghost="IV" data-gsap-reveal>
           <span class="section__index" aria-hidden="true">IV</span>
           Capabilities
         </h2>
         <div class="capabilities__grid" data-gsap-reveal>
           <div class="capabilities__block">
-            <p class="capabilities__text">
-              Full-Stack Web Development &middot; Custom Information Systems &middot;
-              Custom App Development &middot; Enterprise Database Engineering &middot;
-              Applied AI Systems &middot; Ichimoku Trading Analysis &middot;
-              Algorithmic Trading Systems &middot; Workflow Automation &amp; Scripting &middot;
-              Institutional Technology Strategy
-            </p>
+            <p class="capabilities__title">Practice</p>
+            <ul class="capabilities__list" role="list">
+              <li>Full-Stack Web Development</li>
+              <li>Custom Information Systems</li>
+              <li>Custom App Development</li>
+              <li>Enterprise Database Engineering</li>
+              <li>Applied AI Systems</li>
+              <li>Ichimoku Trading Analysis</li>
+              <li>Algorithmic Trading Systems</li>
+              <li>Workflow Automation &amp; Scripting</li>
+              <li>Institutional Technology Strategy</li>
+            </ul>
           </div>
           <div class="capabilities__block">
             <p class="capabilities__title">Education</p>
@@ -267,7 +362,7 @@
     <!-- ===== WRITING ===== -->
     <section class="section section--writing" id="writing" aria-labelledby="writing-heading">
       <div class="section__inner">
-        <h2 class="section__heading" id="writing-heading" data-gsap-reveal>
+        <h2 class="section__heading" id="writing-heading" data-ghost="V" data-gsap-reveal>
           <span class="section__index" aria-hidden="true">V</span>
           Writing
         </h2>
@@ -286,46 +381,11 @@
         </div>
       </div>
     </section>
-    <!-- ===== CORRESPONDENCE ===== -->
-    <section class="section section--connect" id="connect" aria-labelledby="connect-heading">
-      <div class="section__inner">
-        <h2 class="section__heading" id="connect-heading" data-gsap-reveal>
-          <span class="section__index" aria-hidden="true">VI</span>
-          Correspondence
-        </h2>
-        <ul class="connect__list" role="list">
-          <li>
-            <a href="mailto:neomalesa@protonmail.com" class="connect__link" aria-label="Send an email">
-              <span>Email</span>
-              <span class="connect__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/n30dyn4m1c" class="connect__link" target="_blank" rel="noopener noreferrer" aria-label="Follow on X (opens in a new tab)">
-              <span>X</span>
-              <span class="connect__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://medium.com/@neomalesa" class="connect__link" target="_blank" rel="noopener noreferrer" aria-label="Read on Medium (opens in a new tab)">
-              <span>Medium</span>
-              <span class="connect__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/n30dyn4m1c" class="connect__link" target="_blank" rel="noopener noreferrer" aria-label="View code on GitHub (opens in a new tab)">
-              <span>GitHub</span>
-              <span class="connect__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
     <!-- ===== ENGAGEMENTS ===== -->
     <section class="section section--mandates" id="engagements" aria-labelledby="engagements-heading">
       <div class="section__inner">
-        <h2 class="section__heading" id="engagements-heading" data-gsap-reveal>
-          <span class="section__index" aria-hidden="true">VII</span>
+        <h2 class="section__heading" id="engagements-heading" data-ghost="VI" data-gsap-reveal>
+          <span class="section__index" aria-hidden="true">VI</span>
           Engagements
         </h2>
         <div class="mandates__body">
@@ -360,9 +420,49 @@
         </div>
       </div>
     </section>
+    <!-- ===== CORRESPONDENCE ===== -->
+    <section class="section section--connect" id="connect" aria-labelledby="connect-heading">
+      <div class="section__inner">
+        <h2 class="section__heading" id="connect-heading" data-ghost="VII" data-gsap-reveal>
+          <span class="section__index" aria-hidden="true">VII</span>
+          Correspondence
+        </h2>
+        <ul class="connect__list" role="list">
+          <li>
+            <a href="mailto:neomalesa@protonmail.com" class="connect__link" aria-label="Send an email">
+              <span class="connect__name">Email</span>
+              <span class="connect__handle">neomalesa@protonmail.com</span>
+              <span class="connect__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/n30dyn4m1c" class="connect__link" target="_blank" rel="noopener noreferrer" aria-label="Follow on X (opens in a new tab)">
+              <span class="connect__name">X</span>
+              <span class="connect__handle">@n30dyn4m1c</span>
+              <span class="connect__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://medium.com/@neomalesa" class="connect__link" target="_blank" rel="noopener noreferrer" aria-label="Read on Medium (opens in a new tab)">
+              <span class="connect__name">Medium</span>
+              <span class="connect__handle">@neomalesa</span>
+              <span class="connect__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/n30dyn4m1c" class="connect__link" target="_blank" rel="noopener noreferrer" aria-label="View code on GitHub (opens in a new tab)">
+              <span class="connect__name">GitHub</span>
+              <span class="connect__handle">n30dyn4m1c</span>
+              <span class="connect__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
   <!-- ===== FOOTER ===== -->
   <footer class="footer" role="contentinfo">
+    <p class="footer__watermark" aria-hidden="true">Neo Malesa</p>
     <div class="footer__inner">
       <p class="footer__copy">© <span id="year">2026</span> Neo Malesa. All rights reserved.</p>
       <a href="#hero" class="back-to-top" aria-label="Back to top of page">
@@ -373,6 +473,7 @@
   <!-- GSAP + ScrollTrigger loaded before main.js so they're available synchronously -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="js/main.js"></script>
+  <!-- If main.js fails to load, drop the .js class so nothing stays hidden -->
+  <script src="js/main.js" onerror="document.documentElement.classList.remove('js');"></script>
 </body>
 </html>

@@ -51,10 +51,12 @@ Once the domain is purchased:
 ```
 index.html               entry point — all sections on a single page
 404.html                 branded not-found page (served by GitHub Pages)
-css/style.css            design tokens and all styles (single light scheme)
-js/main.js               horizon canvas, hero reveals, GSAP scroll animations, footer year
-assets/images/           photography — neo_profilepic.jpg is the hero portrait
+css/style.css            design tokens and all styles (single dark scheme)
+js/main.js               hero reveals, GSAP scroll animations, section rail, footer year
+assets/images/           photography — neo_profilepic.jpg is the hero portrait, plus
+                          -800/-1600 webp/jpg variants for responsive srcset
 assets/og-image.png      1200×630 social link-preview card
+favicon.svg/.png/.ico    gold seal monogram favicon, in the formats browsers expect
 CNAME                    custom domain — leave empty until domain is ready
 ```
 
