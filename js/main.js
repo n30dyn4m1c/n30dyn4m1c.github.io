@@ -33,7 +33,8 @@ function initReveal() {
    GSAP SCROLL ANIMATIONS
    Gated behind prefers-reduced-motion and GSAP availability.
    Reveals section headings, body blocks, and connect links as
-   they scroll into view.
+   they scroll into view; drifts the ghost numerals and portrait
+   for quiet depth.
    ============================================================ */
 
 function initScrollAnimations() {
@@ -67,6 +68,47 @@ function initScrollAnimations() {
     );
   });
 
+  // Ghost numerals — slow counter-drift against the scroll.
+  // The numeral is the heading's ::before, so the heading itself is
+  // the proxy target: a custom property drives the pseudo-element.
+  document.querySelectorAll('.section__heading[data-ghost]').forEach((el) => {
+    const section = el.closest('.section');
+    gsap.fromTo(
+      el,
+      { '--ghost-y': '70px' },
+      {
+        '--ghost-y': '-70px',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section || el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      }
+    );
+  });
+
+  // Hero portrait — gentle parallax on the wrapper so the CSS
+  // scale-settle on the <img> is left untouched
+  const portraitFrame = document.querySelector('.hero__portrait picture');
+  if (portraitFrame && window.matchMedia('(min-width: 900px)').matches) {
+    gsap.fromTo(
+      portraitFrame,
+      { yPercent: 0 },
+      {
+        yPercent: 6,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      }
+    );
+  }
+
   // Connect links — staggered slide-in from left
   const connectList = document.querySelector('.connect__list');
   if (connectList) {
@@ -90,111 +132,48 @@ function initScrollAnimations() {
 
 
 /* ============================================================
-   SLOW HORIZON CANVAS ANIMATION
-   A few low, slow sine lines in the gold accent — a quiet,
-   solemn undertone behind the hero rather than a lively wave.
-   Positioned behind the hero text. Pauses when tab is hidden.
-   Gated behind prefers-reduced-motion in init.
+   SECTION RAIL
+   Fades in once the hero scrolls out of view; the numeral for
+   the section nearest the viewport centre carries aria-current.
    ============================================================ */
 
-let wave = null;
+function initRail() {
+  const rail = document.getElementById('rail');
+  if (!rail || !('IntersectionObserver' in window)) return;
 
-class ResonatingWave {
-  constructor(canvas) {
-    this.canvas = canvas;
-    this.ctx = canvas.getContext('2d');
-    this.tick = 0;
-    this.animId = null;
-    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    this.rgb = this._readAccentRgb();
-
-    // Lower amplitudes, slower speeds, restrained opacity — measured, not animated.
-    this.layers = [
-      { amp: 22,  freq: 0.0060, phase: 0.0,  speed: 0.0050, opacity: 0.16, width: 1.4 },
-      { amp: 13,  freq: 0.0100, phase: 2.1,  speed: 0.0075, opacity: 0.09, width: 1.0 },
-      { amp: 40,  freq: 0.0032, phase: 4.6,  speed: 0.0032, opacity: 0.06, width: 2.2 },
-    ];
-
-    this._resize();
-    this._bindEvents();
+  const hero = document.getElementById('hero');
+  if (hero) {
+    new IntersectionObserver(
+      ([entry]) => {
+        rail.classList.toggle('is-visible', !entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    ).observe(hero);
   }
 
-  _readAccentRgb() {
-    const val = getComputedStyle(document.documentElement)
-      .getPropertyValue('--color-accent-rgb')
-      .trim();
-    return val || '138, 106, 31';
-  }
+  const links = new Map();
+  rail.querySelectorAll('.rail__link').forEach((link) => {
+    links.set(link.getAttribute('href').slice(1), link);
+  });
 
-  _resize() {
-    const { canvas, ctx, dpr } = this;
-    const w = canvas.offsetWidth  || canvas.parentElement.offsetWidth;
-    const h = canvas.offsetHeight || canvas.parentElement.offsetHeight;
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const link = links.get(entry.target.id);
+        if (!link) return;
+        links.forEach((l) => l.removeAttribute('aria-current'));
+        link.setAttribute('aria-current', 'true');
+      });
+    },
+    // A narrow band around the viewport centre decides the active section
+    { rootMargin: '-45% 0px -45% 0px' }
+  );
 
-    // Back the canvas at device resolution so lines stay crisp on HiDPI screens
-    canvas.width  = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
-
-    // Draw in CSS pixels; the transform maps them to device pixels
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    this.cssWidth  = w;
-    this.cssHeight = h;
-  }
-
-  _draw() {
-    const { ctx, layers, tick, rgb, cssWidth: width, cssHeight: height } = this;
-
-    ctx.clearRect(0, 0, width, height);
-
-    const centerY = height * 0.58;
-
-    layers.forEach((layer) => {
-      ctx.beginPath();
-
-      for (let x = 0; x <= width; x += 2) {
-        const y =
-          centerY +
-          Math.sin(x * layer.freq + tick * layer.speed + layer.phase) * layer.amp;
-
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-
-      ctx.strokeStyle = `rgba(${rgb}, ${layer.opacity})`;
-      ctx.lineWidth   = layer.width;
-      ctx.lineJoin    = 'round';
-      ctx.lineCap     = 'round';
-      ctx.stroke();
-    });
-
-    this.tick++;
-  }
-
-  _animate() {
-    this._draw();
-    this.animId = requestAnimationFrame(() => this._animate());
-  }
-
-  start() {
-    if (this.animId) return;
-    this._animate();
-  }
-
-  stop() {
-    cancelAnimationFrame(this.animId);
-    this.animId = null;
-  }
-
-  _bindEvents() {
-    const ro = new ResizeObserver(() => {
-      this._resize();
-    });
-    ro.observe(this.canvas.parentElement);
-
-    document.addEventListener('visibilitychange', () => {
-      document.hidden ? this.stop() : this.start();
-    });
-  }
+  links.forEach((_, id) => {
+    const section = document.getElementById(id);
+    if (section) sectionObserver.observe(section);
+  });
 }
 
 
@@ -205,27 +184,5 @@ class ResonatingWave {
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initScrollAnimations();
-
-  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const canvas = document.getElementById('heroCanvas');
-
-  function startWave() {
-    if (wave || !canvas) return;
-    wave = new ResonatingWave(canvas);
-    wave.start();
-  }
-
-  // Wave — only if motion is acceptable
-  if (!motionQuery.matches) {
-    startWave();
-  }
-
-  // Respond if the user changes their motion preference mid-session
-  motionQuery.addEventListener('change', (e) => {
-    if (e.matches) {
-      if (wave) wave.stop();
-    } else {
-      wave ? wave.start() : startWave();
-    }
-  });
+  initRail();
 });
